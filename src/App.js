@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import HeadPage from './components/HeadPage'
+import NotFoundPage from './components/NotFoundPage'
+import CreatePost from './components/CreatePost'
+import DisplayPage from './components/DisplayPage'
+import EditPage from './components/EditPage'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<HeadPage />} />
+        <Route path="/posts/new"  element={<CreatePost/>}/>
+        <Route path="/posts/:id"  element={<DisplayPage/>} />
+        <Route path="/posts/:id/:edit"  element={<EditPage/>} />
+        <Route path="*"  element={<NotFoundPage/>} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
