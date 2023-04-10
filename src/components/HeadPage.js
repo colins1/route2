@@ -10,7 +10,7 @@ import photo from '../imgs/photo.svg'
 import sticker from '../imgs/sticker.svg'
 
 export default function HeadPage() {
-    const [data] = useJsonFetch(process.env.REACT_APP_DATA_URL, [])
+    const [data] = useJsonFetch('http://localhost:7777/posts', [])
    
     const handleChange = (event) => {
         if(event.target.scrollTop > 0){
@@ -28,7 +28,7 @@ export default function HeadPage() {
             <h1>Главная</h1>
             <Fragment>
                 {data.length > 0 && 
-                <span>{data.map(or, i => 
+                <span>{data.map( (or, i) => 
                     <span key={i}>  
                         <div className="block">
 
